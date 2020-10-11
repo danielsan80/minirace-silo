@@ -127,6 +127,11 @@ module cap() {
     cube([cap_width+cap_hangover*2,cap_height+cap_hangover*2,cap_hangover]);
 }
 
+module cap2() {
+    cube([cap_width,cap_height,cap_deep-cap_hangover]);
+
+}
+
 module sim_upright() {
     
     difference() {
@@ -212,5 +217,7 @@ module print_upright() {
 
 //print_caps();
 
-cap();
+//cap();
+
+cap2();
     

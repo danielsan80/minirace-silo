@@ -26,11 +26,15 @@ magnet_void_h = magnet_h+magnet_h_play;
 
 upright_length = 50;
 
+upright_num = 3;
+
 traverse_thick = 5.5;
 traverse_length = 22;
 traverse_height=sin(45)*traverse_length;
 
 traverse_magnet_shift = 0.1;
+
+
 
 cap_play = 0.5;
 cap_hangover = 0.5;
@@ -93,11 +97,10 @@ module radius() {
 module wheel() {
     outer_wheel();
     inner_wheel();
-    radius();
-    rotate([0,0,120])
-    radius();
-    rotate([0,0,240])
-    radius();
+    for (i = [0:upright_num-1]) {
+        rotate([0,0,(360/upright_num)*i])
+        radius();
+    }
 }
 
 module upright() {
@@ -146,14 +149,10 @@ module sim_upright() {
 }
 
 module sim_uprights() {
-    sim_upright();
-    
-    rotate([0,0,120])
-    sim_upright();
-    
-
-    rotate([0,0,240])
-    sim_upright();
+    for (i = [0:upright_num-1]) {
+        rotate([0,0,(360/upright_num)*i])
+        sim_upright();
+    }
 }
 
 
@@ -209,15 +208,15 @@ module print_upright() {
 //    cube(10,10,10);
 //}
 
-//sim_wheel();
+sim_wheel();
 
 //sim_upright();
 //print_upright();
-//sim_uprights();
+sim_uprights();
 
 //print_caps();
 
 //cap();
 
-cap2();
+//cap2();
     
